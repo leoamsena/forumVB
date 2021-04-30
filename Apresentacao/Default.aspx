@@ -3,9 +3,11 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NETz is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a><asp:Button ID="Button1" runat="server" Text="Button" />
+        <h1>Forum de Estudos</h1>
+        <p class="lead">Para ver as publicações e publicar seus próprios posts faça login.</p>
+        <p>
+            <asp:Login ID="Login1" runat="server" FailureText="A tentativa de login não teve êxito. Tente novamente." LoginButtonText="Fazer Login" RememberMeText="Lembrar" TitleText="Fazer Login" UserNameLabelText="Email:" UserNameRequiredErrorMessage="O Email é obrigatório.">
+            </asp:Login>
         </p>
     </div>
 

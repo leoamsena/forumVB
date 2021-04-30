@@ -14,11 +14,11 @@ Option Explicit On
 Partial Public Class _Default
 
     '''<summary>
-    '''Controle Button1.
+    '''Controle Login1.
     '''</summary>
     '''<remarks>
     '''Campo gerado automaticamente.
     '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
     '''</remarks>
-    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents Login1 As Global.System.Web.UI.WebControls.Login
 End Class

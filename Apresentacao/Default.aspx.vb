@@ -5,7 +5,11 @@
 
     End Sub
 
-    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim objFunc As Pessoa = New Funcionario("137.808.876-06", "Leo", "teste", "opa")
+
+
+    Protected Sub Login1_Authenticate(sender As Object, e As AuthenticateEventArgs) Handles Login1.Authenticate
+        Dim logado As Boolean = Funcionarios.makeLogin("", "")
+        System.Diagnostics.Debug.WriteLine("logado?" & CStr(logado))
+
     End Sub
 End Class
