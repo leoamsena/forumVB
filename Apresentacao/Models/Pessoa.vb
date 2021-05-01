@@ -2,6 +2,17 @@
     Private FCPF As String
     Private FNome As String
 
+    Public ReadOnly Property getCPF
+        Get
+            Return FCPF
+        End Get
+    End Property
+    Public ReadOnly Property getNome
+        Get
+            Return FNome
+        End Get
+    End Property
+
     Public Sub New(CPF As String, Nome As String)
         If CheckCPF(CPF) = True Then
             FCPF = CPF

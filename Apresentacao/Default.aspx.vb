@@ -8,8 +8,28 @@
 
 
     Protected Sub Login1_Authenticate(sender As Object, e As AuthenticateEventArgs) Handles Login1.Authenticate
-        Dim logado As Boolean = Funcionarios.makeLogin("", "")
-        System.Diagnostics.Debug.WriteLine("logado?" & CStr(logado))
+        Dim objFunc As Funcionario = Controllers.FuncionarioController.makeLogin(Login1.UserName, Login1.Password)
+        If Not IsNothing(objFunc) Then
+            Session("autenticado") = "OK"
+            Session("functionario") = objFunc
+            Server.Transfer("Main.aspx")
+        End If
 
+    End Sub
+
+    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Try
+
+
+            Dim reg As Boolean = Controllers.FuncionarioController.registerFunc(rgNome.Text, rgCPF.Text, rgEmail.Text, rgPass.Text)
+
+            If reg Then
+                rgMsg.Text = "Registrado com sucesso! Faça login! "
+            Else
+                Throw New Exception("Erro desconhecido!")
+            End If
+        Catch ex As Exception
+            rgMsg.Text = "Erro " + ex.Message + " ao registrar!"
+        End Try
     End Sub
 End Class
