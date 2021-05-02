@@ -4,7 +4,8 @@
 
     <div class="jumbotron">
         <h1>Forum de Estudos</h1>
-        <p class="lead">Para ver as publicações e publicar seus próprios posts faça login.</p>
+        <p class="lead">Para ver as publicações e publicar seus próprios posts faça login.<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        </p>
         <p>
             <asp:Login ID="Login1" runat="server" FailureText="A tentativa de login não teve êxito. Tente novamente." LoginButtonText="Fazer Login" RememberMeText="Lembrar" TitleText="Fazer Login" UserNameLabelText="Email:" UserNameRequiredErrorMessage="O Email é obrigatório.">
                 <LayoutTemplate>

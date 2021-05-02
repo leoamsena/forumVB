@@ -2,7 +2,11 @@
     Inherits Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
-
+        If (Not IsNothing(HttpContext.Current.Session("autenticado"))) AndAlso HttpContext.Current.Session("autenticado").ToString() = "OK" Then
+            HttpContext.Current.Response.Redirect("Main.aspx")
+        Else
+            Debug.WriteLine(CStr(IsNothing(HttpContext.Current.Session("autenticado"))) & " - ")
+        End If
     End Sub
 
 
@@ -12,7 +16,7 @@
         If Not IsNothing(objFunc) Then
             Session("autenticado") = "OK"
             Session("functionario") = objFunc
-            Server.Transfer("Main.aspx")
+            Response.Redirect("Main.aspx")
         End If
 
     End Sub
