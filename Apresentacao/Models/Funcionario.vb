@@ -30,4 +30,9 @@
         FId = Id
     End Sub
 
+    Public Sub New(Nome As String)
+        MyBase.New(Nome)
+
+    End Sub
+
 End Class

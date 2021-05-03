@@ -12,4 +12,13 @@ Option Explicit On
 
 
 Partial Public Class WebForm1
+
+    '''<summary>
+    '''Controle accordion.
+    '''</summary>
+    '''<remarks>
+    '''Campo gerado automaticamente.
+    '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+    '''</remarks>
+    Protected WithEvents accordion As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 End Class

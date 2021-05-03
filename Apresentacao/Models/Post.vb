@@ -1,4 +1,4 @@
-﻿Public MustInherit Class Post
+﻿Public Class Post
     Private FPostDate As DateTime
     Private FTitle As String
     Private FText As String

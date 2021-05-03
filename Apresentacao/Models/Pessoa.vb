@@ -1,4 +1,4 @@
-﻿Public Class Pessoa
+﻿Public MustInherit Class Pessoa
     Private FCPF As String
     Private FNome As String
 
@@ -20,6 +20,10 @@
             Throw New InvalidCPF()
         End If
 
+        FNome = Nome
+    End Sub
+
+    Public Sub New(Nome As String)
         FNome = Nome
     End Sub
 

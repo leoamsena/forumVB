@@ -2,7 +2,7 @@
 
 Namespace Controllers
     Public Class FuncionarioController
-        Private Shared bd = New FuncionarioDB()
+
 
         Public Shared Function makeLogin(login As String, password As String)
             Return FuncionarioDB.makeAuth(login, Database.hash(password))

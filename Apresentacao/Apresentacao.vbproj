@@ -221,8 +221,10 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Controllers\FuncionarioController.vb" />
+    <Compile Include="Controllers\PostController.vb" />
     <Compile Include="Database\Database.vb" />
     <Compile Include="Database\FuncionarioDB.vb" />
+    <Compile Include="Database\PostDB.vb" />
     <Compile Include="Default.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
