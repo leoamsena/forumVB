@@ -13,8 +13,8 @@
             sqlReader.Read()
             Dim values(5) As Object
             sqlReader.GetValues(values)
-            Debug.WriteLine(values(0) & " " & values(1))
-            objFunc = New Funcionario(values(1).ToString, values(0).ToString, values(2).ToString, password, Val(values(3).ToString))
+            Debug.WriteLine(values(0) & " " & values(4).ToString)
+            objFunc = New Funcionario(values(1).ToString, values(0).ToString, values(2).ToString, password, Val(values(4).ToString))
         End If
         conn.Close()
         Return objFunc

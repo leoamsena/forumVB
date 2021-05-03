@@ -32,7 +32,10 @@
 
     Public Sub New(Nome As String)
         MyBase.New(Nome)
-
+    End Sub
+    Public Sub New(id As Integer)
+        MyBase.New("")
+        FId = id
     End Sub
 
 End Class

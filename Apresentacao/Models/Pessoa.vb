@@ -26,7 +26,6 @@
     Public Sub New(Nome As String)
         FNome = Nome
     End Sub
-
     Private Function CheckCPF(CPF As String) As Boolean
         Try
             CPF = CPF.Replace(".", "")

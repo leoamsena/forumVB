@@ -3,9 +3,9 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         If (Not IsNothing(HttpContext.Current.Session("autenticado"))) AndAlso HttpContext.Current.Session("autenticado").ToString() = "OK" Then
-            HttpContext.Current.Response.Redirect("Main.aspx")
-        Else
-            Debug.WriteLine(CStr(IsNothing(HttpContext.Current.Session("autenticado"))) & " - ")
+            HttpContext.Current.Response.Redirect("Home.aspx")
+
+
         End If
     End Sub
 
@@ -15,8 +15,8 @@
         Dim objFunc As Funcionario = Controllers.FuncionarioController.makeLogin(Login1.UserName, Login1.Password)
         If Not IsNothing(objFunc) Then
             Session("autenticado") = "OK"
-            Session("functionario") = objFunc
-            Response.Redirect("Main.aspx")
+            Session("funcionario") = objFunc
+            Response.Redirect("Home.aspx")
         End If
 
     End Sub

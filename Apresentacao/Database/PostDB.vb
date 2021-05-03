@@ -9,19 +9,37 @@
         Dim exists As Boolean = sqlReader.HasRows
 
         Dim arrPost As Post() = Nothing
+        Dim tam As Integer = 0
 
-        If exists Then
-            ReDim arrPost(0)
-        End If
 
         While sqlReader.Read()
-            ReDim arrPost(arrPost.Length + 1)
+            tam += 1
+            ReDim Preserve arrPost(tam - 1)
 
-            Dim values(5) As Object
+            Dim values(6) As Object
             sqlReader.GetValues(values)
-            arrPost(arrPost.Length - 1) = New Post(values(1).ToString, values(2).ToString, values(3).ToString, New Funcionario(values(5).ToString))
+            arrPost(tam - 1) = New Post(values(1).ToString, values(2).ToString, values(3).ToString, New Funcionario(values(5).ToString), values(0).ToString)
+
         End While
         conn.Close()
         Return arrPost
+    End Function
+    Public Shared Function insertPost(post As Post) As Boolean
+        Dim conn As OleDb.OleDbConnection = Database.getConn
+        Dim strSQL As String = "INSERT INTO posts(titulo,texto,data,usuario) VALUES (?,?, ?,? )"
+        Dim cmd As New OleDb.OleDbCommand(strSQL, conn)
+
+        Debug.WriteLine(post.usuario.getId)
+
+        cmd.Parameters.Add("@titulo", OleDb.OleDbType.VarChar).Value = post.title
+        cmd.Parameters.Add("@text", OleDb.OleDbType.VarChar).Value = post.text
+        cmd.Parameters.Add("@data", OleDb.OleDbType.VarChar).Value = post.postDate
+        cmd.Parameters.Add("@usuario", OleDb.OleDbType.VarChar).Value = post.usuario.getId
+
+        conn.Open()
+        Dim icount As Integer
+        icount = cmd.ExecuteNonQuery()
+        conn.Close()
+        Return icount >= 1
     End Function
 End Class
