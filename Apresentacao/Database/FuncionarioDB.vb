@@ -26,8 +26,8 @@
 
         cmd.Parameters.Add("@nome", OleDb.OleDbType.VarChar).Value = func.getNome
         cmd.Parameters.Add("@cpf", OleDb.OleDbType.VarChar).Value = func.getCPF
-        cmd.Parameters.Add("@email", OleDb.OleDbType.VarChar).Value = func.getEmail
-        cmd.Parameters.Add("@password", OleDb.OleDbType.VarChar).Value = func.getPassword
+        cmd.Parameters.Add("@email", OleDb.OleDbType.VarChar).Value = func.email
+        cmd.Parameters.Add("@password", OleDb.OleDbType.VarChar).Value = func.password
 
         conn.Open()
         Dim icount As Integer

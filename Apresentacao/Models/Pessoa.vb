@@ -1,7 +1,6 @@
 ﻿Public MustInherit Class Pessoa
     Private FCPF As String
     Private FNome As String
-
     Public ReadOnly Property getCPF
         Get
             Return FCPF
@@ -12,7 +11,6 @@
             Return FNome
         End Get
     End Property
-
     Public Sub New(CPF As String, Nome As String)
         If CheckCPF(CPF) = True Then
             FCPF = CPF
@@ -22,11 +20,15 @@
 
         FNome = Nome
     End Sub
-
     Public Sub New(Nome As String)
         FNome = Nome
     End Sub
     Private Function CheckCPF(CPF As String) As Boolean
+
+        Dim varPessoa As Pessoa
+        varPessoa = New Funcionario(1)
+
+
         Try
             CPF = CPF.Replace(".", "")
             CPF = CPF.Replace("-", "")
@@ -72,13 +74,9 @@
         Catch ex As InvalidCPF
             Return False
         Catch ex As Exception
-
-            Return False
+            Throw ex
         End Try
 
 
     End Function
-
-
-
 End Class

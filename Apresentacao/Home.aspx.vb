@@ -14,8 +14,8 @@
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Debug.WriteLine(TryCast(Session("funcionario"), Funcionario).getNome)
-        Debug.WriteLine(TryCast(Session("funcionario"), Funcionario).getId)
-        Dim ok As Boolean = PostController.insertPost(titulo.Text, texto.Text, TryCast(Session("funcionario"), Funcionario).getId)
+        Debug.WriteLine(TryCast(Session("funcionario"), Funcionario).id)
+        Dim ok As Boolean = PostController.insertPost(titulo.Text, texto.Text, TryCast(Session("funcionario"), Funcionario).id)
         If ok Then
             msgPost.Text = "Sucesso!"
         Else
