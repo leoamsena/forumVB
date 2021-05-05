@@ -47,6 +47,7 @@
                                     <tr>
                                         <td align="right" colspan="2">
                                             <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Fazer Login" ValidationGroup="Login1" />
+                                            
                                         </td>
                                     </tr>
                                 </table>
@@ -55,6 +56,8 @@
                     </table>
                 </LayoutTemplate>
             </asp:Login>
+            <asp:Label ID="lblCount" runat="server" Text="Tentativas de login: 0"></asp:Label>
+            <asp:Label ID="lblVisits" runat="server" Text="Visitas a essa página: 0"></asp:Label>
             <table style="width:30%;">
                 <tr>
                     <td>Nome</td>

@@ -1,13 +1,18 @@
 ﻿Public Class Home
     Inherits System.Web.UI.Page
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        If IsNothing(HttpContext.Current.Session("autenticado")) OrElse HttpContext.Current.Session("autenticado").ToString() <> "OK" Then
-            HttpContext.Current.Session.Abandon()
 
-            HttpContext.Current.Response.Redirect("Default.aspx")
+    Private postController As PostController
+
+    Public Sub New()
+        postController = New PostController()
+    End Sub
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If IsNothing(Session("autenticado")) OrElse Session("autenticado").ToString() <> "OK" Then
+            Session.Abandon()
+            Response.Redirect("Default.aspx")
         Else
-            Posts.DataSource = PostController.allPosts()
+            Posts.DataSource = postController.allPosts()
             Posts.DataBind()
         End If
     End Sub
@@ -15,12 +20,15 @@
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Debug.WriteLine(TryCast(Session("funcionario"), Funcionario).getNome)
         Debug.WriteLine(TryCast(Session("funcionario"), Funcionario).id)
-        Dim ok As Boolean = PostController.insertPost(titulo.Text, texto.Text, TryCast(Session("funcionario"), Funcionario).id)
+
+        Dim ok As Boolean = postController.insertPost(titulo.Text, texto.Text, TryCast(Session("funcionario"), Funcionario).id)
         If ok Then
             msgPost.Text = "Sucesso!"
         Else
             msgPost.Text = "Erro!"
         End If
 
+
     End Sub
 End Class
+

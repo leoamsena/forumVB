@@ -32,6 +32,24 @@ Partial Public Class _Default
     Protected WithEvents Login1 As Global.System.Web.UI.WebControls.Login
 
     '''<summary>
+    '''Controle lblCount.
+    '''</summary>
+    '''<remarks>
+    '''Campo gerado automaticamente.
+    '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+    '''</remarks>
+    Protected WithEvents lblCount As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Controle lblVisits.
+    '''</summary>
+    '''<remarks>
+    '''Campo gerado automaticamente.
+    '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+    '''</remarks>
+    Protected WithEvents lblVisits As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Controle rgNome.
     '''</summary>
     '''<remarks>
