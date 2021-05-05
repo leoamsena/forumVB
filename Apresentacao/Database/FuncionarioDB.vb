@@ -1,43 +1,24 @@
 ﻿Public Class FuncionarioDB
     Inherits Database
 
-    Public Shared Function makeAuth(login As String, password As String) As Funcionario
+    Public Function makeAuth(login As String, password As String) As Funcionario
         Dim connection As OleDb.OleDbConnection = conn
-        Dim strSQL As String = "Select TOP 1 * FROM Funcionarios WHERE email = ? AND password = ? "
-        Dim cmd As New OleDb.OleDbCommand(strSQL, connection)
-        cmd.Parameters.Add("@email", OleDb.OleDbType.VarChar).Value = login
-        cmd.Parameters.Add("@pass", OleDb.OleDbType.VarChar).Value = password
-        connection.Open()
-        Dim sqlReader As OleDb.OleDbDataReader = cmd.ExecuteReader()
-        Dim exists As Boolean = sqlReader.HasRows
+        Dim cmd = mountCmd("Select TOP 1 * FROM Funcionarios WHERE email = ? AND password = ? ", connection, login, password)
+        Dim queue = readData(cmd, connection)
         Dim objFunc As Funcionario = Nothing
-        If exists Then
-            sqlReader.Read()
-            Dim values(5) As Object
-            sqlReader.GetValues(values)
-            Debug.WriteLine(values(0) & " " & values(4).ToString)
-            objFunc = New Funcionario(values(1).ToString, values(0).ToString, values(2).ToString, password, Val(values(4).ToString))
+        If queue IsNot Nothing Then
+            Dim result As Dictionary(Of String, String) = queue.Dequeue()
+            objFunc = New Funcionario(result.Item("CPF"), result.Item("nome"), result.Item("email"), result.Item("password"), result.Item("id"))
         End If
         connection.Close()
         Return objFunc
     End Function
 
 
-    Public Shared Function registerFunc(func As Funcionario) As Boolean
-        Dim connection As OleDb.OleDbConnection = conn
-        Dim strSQL As String = "INSERT INTO Funcionarios(nome,cpf,email,password) VALUES (?,?, ?,? )"
-        Dim cmd As New OleDb.OleDbCommand(strSQL, connection)
-
-        cmd.Parameters.Add("@nome", OleDb.OleDbType.VarChar).Value = func.getNome
-        cmd.Parameters.Add("@cpf", OleDb.OleDbType.VarChar).Value = func.getCPF
-        cmd.Parameters.Add("@email", OleDb.OleDbType.VarChar).Value = func.email
-        cmd.Parameters.Add("@password", OleDb.OleDbType.VarChar).Value = func.password
-
-        connection.Open()
-        Dim icount As Integer
-        icount = cmd.ExecuteNonQuery()
-        connection.Close()
-        Return icount >= 1
+    Public Function registerFunc(func As Funcionario) As Boolean
+        Dim connection = conn
+        Dim cmd = mountCmd("INSERT INTO Funcionarios(nome,cpf,email,password) VALUES (?,?, ?,? )", connection, func.nome, func.CPF, func.email, func.password)
+        Return insertData(cmd, connection)
     End Function
 End Class
 

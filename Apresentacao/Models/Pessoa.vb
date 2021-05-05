@@ -1,12 +1,12 @@
 ﻿Public MustInherit Class Pessoa
     Private FCPF As String
     Private FNome As String
-    Public ReadOnly Property getCPF
+    Public ReadOnly Property CPF
         Get
             Return FCPF
         End Get
     End Property
-    Public ReadOnly Property getNome
+    Public ReadOnly Property nome
         Get
             Return FNome
         End Get
