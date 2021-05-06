@@ -82,12 +82,13 @@
                     <td>Senha</td>
                     <td >
                         <asp:TextBox ID="rgPass" runat="server" TextMode="Password"></asp:TextBox>
+                        
                     </td>
                 </tr>
                <tr>
                     <td></td>
                     <td >
-                        <asp:Button ID="Button1" runat="server" Text="Registrar" />
+                        <asp:Button ID="Button1" runat="server" Text="Registrar" CausesValidation=true/>
                     </td>
                 </tr>
                 <tr>
