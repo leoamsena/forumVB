@@ -3,7 +3,7 @@
 
     Public Function searchPost() As Post()
         Dim connection = conn
-        Dim cmd As OleDb.OleDbCommand = mountCmd("Select p.*,f.nome FROM posts AS p INNER JOIN funcionarios AS F ON f.id = p.usuario ORDER BY data ", connection, Nothing)
+        Dim cmd As OleDb.OleDbCommand = mountCmd("Select p.*,f.nome FROM posts AS p INNER JOIN funcionarios AS F ON f.id = p.usuario ORDER BY data DESC", connection, Nothing)
         Dim objDict As Queue = readData(cmd, connection)
         Dim arrPost As Post() = Nothing
         Dim tam As Integer = 0
