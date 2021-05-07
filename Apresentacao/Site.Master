@@ -41,7 +41,12 @@
         <nav class="navbar navbar-dark bg-dark fixed-top">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">Forum</a>
+              
+                <asp:ContentPlaceHolder ID="NavbarContent" runat="server">
+                </asp:ContentPlaceHolder>
+            
           </div>
+            
         </nav>
 
         

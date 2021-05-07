@@ -23,6 +23,7 @@
         Dim ok As Boolean = postController.insertPost(titulo.Text, texto.Text, TryCast(Session("funcionario"), Funcionario).id)
         If ok Then
             msgPost.Text = "Sucesso!"
+            Response.Redirect(Request.RawUrl)
         Else
             msgPost.Text = "Erro!"
         End If

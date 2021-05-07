@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class SiteMaster
 
     '''<summary>
+    '''Controle NavbarContent.
+    '''</summary>
+    '''<remarks>
+    '''Campo gerado automaticamente.
+    '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+    '''</remarks>
+    Protected WithEvents NavbarContent As Global.System.Web.UI.WebControls.ContentPlaceHolder
+
+    '''<summary>
     '''Controle MainContent.
     '''</summary>
     '''<remarks>

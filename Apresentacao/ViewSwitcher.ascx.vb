@@ -36,6 +36,7 @@ Public Class ViewSwitcher
     Protected Sub Page_Load(sender As Object, e As EventArgs)
         ' Determinar exibição atual
         Dim isMobile = WebFormsFriendlyUrlResolver.IsMobileView(New HttpContextWrapper(Context))
+        isMobile = False
         CurrentView = If(isMobile, "Mobile", "Desktop")
 
         ' Determinar exibição alternativa
