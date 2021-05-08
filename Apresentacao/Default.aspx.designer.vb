@@ -32,6 +32,15 @@ Partial Public Class _Default
     Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''Controle lblFrase.
+    '''</summary>
+    '''<remarks>
+    '''Campo gerado automaticamente.
+    '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+    '''</remarks>
+    Protected WithEvents lblFrase As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Controle rgNomeLabel.
     '''</summary>
     '''<remarks>

@@ -34,19 +34,21 @@
                 <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                
                 <asp:ScriptReference Name="WebFormsBundle" />
+                
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
+        <script src="Scripts/jquery-mask.min.js"></script>
+        <script src="Scripts/jquery-ui.min.js"></script>
         <nav class="navbar navbar-dark bg-dark fixed-top">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">Forum</a>
-              
                 <asp:ContentPlaceHolder ID="NavbarContent" runat="server">
                 </asp:ContentPlaceHolder>
-            
           </div>
-            
         </nav>
 
         

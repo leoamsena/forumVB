@@ -22,6 +22,7 @@
     
 
             </asp:Repeater>
+            
     </div>
     <div class="row mt-3">
         <div class="col-sm-12"><h2>Enviar novo post</h2></div>

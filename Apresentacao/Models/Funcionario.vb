@@ -1,13 +1,14 @@
-﻿Public Class Funcionario
+﻿Public NotInheritable Class Funcionario
     Inherits Pessoa
     Private FEmail As String
     Private FPassword As String
     Private FId As Integer
-    Public ReadOnly Property id
+    Public Overrides ReadOnly Property id
         Get
             Return FId
         End Get
     End Property
+
     Public ReadOnly Property email
         Get
             Return FEmail
@@ -32,3 +33,5 @@
         FId = id
     End Sub
 End Class
+
+

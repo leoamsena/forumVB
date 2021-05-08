@@ -1,6 +1,11 @@
 ﻿Public MustInherit Class Pessoa
     Private FCPF As String
     Private FNome As String
+
+    Public MustOverride ReadOnly Property id
+
+
+
     Public ReadOnly Property CPF
         Get
             Return FCPF

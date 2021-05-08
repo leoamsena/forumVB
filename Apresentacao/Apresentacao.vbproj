@@ -228,8 +228,11 @@
     </Compile>
     <Compile Include="Models\Exceptions\InvalidCPF.vb" />
     <Compile Include="Models\Funcionario.vb" />
+    <Compile Include="Models\HasIdInterface.vb" />
     <Compile Include="Models\Pessoa.vb" />
-    <Compile Include="Models\Post.vb" />
+    <Compile Include="Models\Post.Metodos.vb" />
+    <Compile Include="Models\Post.Propriedades.vb" />
+    <Compile Include="Models\Post.Campos.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

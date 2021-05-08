@@ -1,6 +1,8 @@
 ﻿Public Class PostDB
     Inherits Database
 
+
+
     Public Function searchPost() As Post()
         Dim connection = conn
         Dim cmd As OleDb.OleDbCommand = mountCmd("Select p.*,f.nome FROM posts AS p INNER JOIN funcionarios AS F ON f.id = p.usuario ORDER BY data DESC", connection, Nothing)

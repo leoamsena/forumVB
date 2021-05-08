@@ -1,13 +1,14 @@
 ﻿Public Class _Default
     Inherits Page
 
-    Private funcionarioController As Controllers.FuncionarioController
+    Private funcionarioController As FuncionarioController
 
     Public Sub New()
-        funcionarioController = New Controllers.FuncionarioController()
+        funcionarioController = New FuncionarioController()
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
+
         If Application("visitas") = Nothing Then
             Application("visitas") = 1
         Else
