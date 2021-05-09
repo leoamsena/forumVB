@@ -1,9 +1,9 @@
-﻿Partial Public Class Post
+﻿Partial Public Class mdlPost
 
     Private FPostDate As DateTime
     Private FTitle As String
     Private FText As String
-    Private FUser As Funcionario
+    Private FUser As mdlFuncionario
     Private FId As Integer
 End Class
 

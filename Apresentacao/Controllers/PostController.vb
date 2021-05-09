@@ -12,11 +12,11 @@
         'Dim test As Integer = Nothing
         'FPostDatabase.SavePost(New Post("Novo usuário!", "Agora temos um novo usuário para contribuir conosco!", Date.Now(), New Funcionario(test)))
     End Sub
-    Public Function GetAllPosts() As Post()
+    Public Function GetAllPosts() As mdlPost()
         Return FPostDatabase.SearchPosts()
     End Function
     Public Function SavePost(titulo As String, texto As String, funcionario As Integer)
-        Return FPostDatabase.SavePost(New Post(titulo, texto, Date.Now(), New Funcionario(funcionario)))
+        Return FPostDatabase.SavePost(New mdlPost(titulo, texto, Date.Now(), New mdlFuncionario(funcionario)))
     End Function
 
 End Class

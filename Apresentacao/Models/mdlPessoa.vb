@@ -1,4 +1,4 @@
-﻿Public MustInherit Class Pessoa
+﻿Public MustInherit Class mdlPessoa
     Private FCpf As String
     Private FName As String
 

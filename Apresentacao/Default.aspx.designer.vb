@@ -41,13 +41,13 @@ Partial Public Class _Default
     Protected WithEvents lblFrase As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Controle rgNomeLabel.
+    '''Controle lblRgNome.
     '''</summary>
     '''<remarks>
     '''Campo gerado automaticamente.
     '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
     '''</remarks>
-    Protected WithEvents rgNomeLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblRgNome As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Controle NameRequired.
@@ -59,22 +59,22 @@ Partial Public Class _Default
     Protected WithEvents NameRequired As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
-    '''Controle rgNome.
+    '''Controle txtRgNome.
     '''</summary>
     '''<remarks>
     '''Campo gerado automaticamente.
     '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
     '''</remarks>
-    Protected WithEvents rgNome As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtRgNome As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Controle rgEmailLabel.
+    '''Controle lblRgEmail.
     '''</summary>
     '''<remarks>
     '''Campo gerado automaticamente.
     '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
     '''</remarks>
-    Protected WithEvents rgEmailLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblRgEmail As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Controle rgEmailRequired.
@@ -86,13 +86,13 @@ Partial Public Class _Default
     Protected WithEvents rgEmailRequired As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
-    '''Controle rgEmail.
+    '''Controle txtRgEmail.
     '''</summary>
     '''<remarks>
     '''Campo gerado automaticamente.
     '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
     '''</remarks>
-    Protected WithEvents rgEmail As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtRgEmail As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Controle RegularExpressionValidator1.
@@ -104,13 +104,13 @@ Partial Public Class _Default
     Protected WithEvents RegularExpressionValidator1 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
-    '''Controle rgCPFLabel.
+    '''Controle lblrgCPF.
     '''</summary>
     '''<remarks>
     '''Campo gerado automaticamente.
     '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
     '''</remarks>
-    Protected WithEvents rgCPFLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblrgCPF As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Controle rgCPFRequired.
@@ -122,22 +122,22 @@ Partial Public Class _Default
     Protected WithEvents rgCPFRequired As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
-    '''Controle rgCPF.
+    '''Controle txtRgCPF.
     '''</summary>
     '''<remarks>
     '''Campo gerado automaticamente.
     '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
     '''</remarks>
-    Protected WithEvents rgCPF As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtRgCPF As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Controle rgPassLabel.
+    '''Controle lblRgPass.
     '''</summary>
     '''<remarks>
     '''Campo gerado automaticamente.
     '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
     '''</remarks>
-    Protected WithEvents rgPassLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblRgPass As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Controle rgSenharRequired.
@@ -149,13 +149,13 @@ Partial Public Class _Default
     Protected WithEvents rgSenharRequired As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
-    '''Controle rgPass.
+    '''Controle txtRgPass.
     '''</summary>
     '''<remarks>
     '''Campo gerado automaticamente.
     '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
     '''</remarks>
-    Protected WithEvents rgPass As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtRgPass As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Controle Button1.

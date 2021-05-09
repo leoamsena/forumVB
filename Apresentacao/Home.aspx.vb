@@ -20,7 +20,7 @@
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
 
-        Dim ok As Boolean = FPostController.SavePost(titulo.Text, texto.Text, TryCast(Session("funcionario"), Funcionario).Id)
+        Dim ok As Boolean = FPostController.SavePost(txtTitle.Text, txtText.Text, TryCast(Session("funcionario"), mdlFuncionario).Id)
         If ok Then
             msgPost.Text = "Sucesso!"
             Response.Redirect(Request.RawUrl)

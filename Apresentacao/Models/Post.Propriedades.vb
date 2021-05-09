@@ -1,4 +1,4 @@
-﻿Partial Public Class Post
+﻿Partial Public Class mdlPost
     Implements HasIdInterface
     Public ReadOnly Property Id As Integer Implements HasIdInterface.Id
         Get

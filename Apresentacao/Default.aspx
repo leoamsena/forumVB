@@ -15,7 +15,7 @@
                         <LayoutTemplate>
                             <div>
                                 <asp:Label 
-                                    ID="UserNameLabel" runat="server" 
+                                    ID="lblUserNameLabel" runat="server" 
                                     AssociatedControlID="UserName" 
                                     CssClass="form-label">
                                     Email:
@@ -44,14 +44,14 @@
                                 </asp:RegularExpressionValidator>
                             </div>
                             <div class="mb-3">
-                                <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password" CssClass="form-label">Senha:</asp:Label>
+                                <asp:Label ID="lblPasswordLabel" runat="server" AssociatedControlID="Password" CssClass="form-label">Senha:</asp:Label>
                                 <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="A senha é obrigatória." ToolTip="A senha é obrigatória." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
                                 <asp:TextBox ID="Password" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
                                 
                             </div>
                             <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
 
-                            <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Fazer Login" ValidationGroup="Login1" CssClass="btn btn-primary" />
+                            <asp:Button ID="btnLoginButton" runat="server" CommandName="Login" Text="Fazer Login" ValidationGroup="Login1" CssClass="btn btn-primary" />
                         </LayoutTemplate>
                     </asp:Login>
             </div>
@@ -73,37 +73,37 @@
                        <h2>Registrar!</h2>
                    </div>
                     <div>
-                        <asp:Label ID="rgNomeLabel" runat="server" AssociatedControlID="rgNome" CssClass="form-label">
+                        <asp:Label ID="lblRgNome" runat="server" AssociatedControlID="txtRgNome" CssClass="form-label">
                             Nome
                         </asp:Label>
-                        <asp:RequiredFieldValidator ID="NameRequired" runat="server" ControlToValidate="rgNome" ErrorMessage="O nome é obrigatória." ToolTip="O nome é obrigatória." >*</asp:RequiredFieldValidator>
-                        <asp:TextBox ID="rgNome" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="NameRequired" runat="server" ControlToValidate="txtRgNome" ErrorMessage="O nome é obrigatória." ToolTip="O nome é obrigatória." >*</asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtRgNome" runat="server" CssClass="form-control"></asp:TextBox>
                         
                     </div>
                    
                     <div>
-                        <asp:Label ID="rgEmailLabel" runat="server" AssociatedControlID="rgEmail" CssClass="form-label">
+                        <asp:Label ID="lblRgEmail" runat="server" AssociatedControlID="txtRgEmail" CssClass="form-label">
                             Email
                         </asp:Label>
-                        <asp:RequiredFieldValidator ID="rgEmailRequired" runat="server" ControlToValidate="rgEmail" ErrorMessage="Email é obrigatório." ToolTip="Email é obrigatório." >*</asp:RequiredFieldValidator>
-                        <asp:TextBox ID="rgEmail" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rgEmailRequired" runat="server" ControlToValidate="txtRgEmail" ErrorMessage="Email é obrigatório." ToolTip="Email é obrigatório." >*</asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtRgEmail" runat="server" CssClass="form-control"></asp:TextBox>
                         
-                        <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator1"  ErrorMessage="Não é um email válido!" ControlToValidate="rgEmail"  ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator1"  ErrorMessage="Não é um email válido!" ControlToValidate="txtRgEmail"  ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ></asp:RegularExpressionValidator>
                     </div>
 
                     <div>
-                        <asp:Label ID="rgCPFLabel" runat="server" AssociatedControlID="rgCPF" CssClass="form-label">
+                        <asp:Label ID="lblrgCPF" runat="server" AssociatedControlID="txtRgCPF" CssClass="form-label">
                             CPF
                         </asp:Label>
-                        <asp:RequiredFieldValidator ID="rgCPFRequired" runat="server" ControlToValidate="rgCPF" ErrorMessage="O CPF é obrigatório." ToolTip="O CPF é obrigatório." >*</asp:RequiredFieldValidator>
-                        <asp:TextBox ID="rgCPF" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rgCPFRequired" runat="server" ControlToValidate="txtRgCPF" ErrorMessage="O CPF é obrigatório." ToolTip="O CPF é obrigatório." >*</asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtRgCPF" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                     <div>
-                        <asp:Label ID="rgPassLabel" runat="server" AssociatedControlID="rgPass" CssClass="form-label">
+                        <asp:Label ID="lblRgPass" runat="server" AssociatedControlID="txtRgPass" CssClass="form-label">
                             Senha
                         </asp:Label>
-                        <asp:RequiredFieldValidator ID="rgSenharRequired" runat="server" ControlToValidate="rgPass" ErrorMessage="A senha é obrigatória." ToolTip="A senha é obrigatória." >*</asp:RequiredFieldValidator>
-                        <asp:TextBox ID="rgPass" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rgSenharRequired" runat="server" ControlToValidate="txtRgPass" ErrorMessage="A senha é obrigatória." ToolTip="A senha é obrigatória." >*</asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtRgPass" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
                     </div>
                     <div class="mt-3">
                         <asp:Button ID="Button1" runat="server" Text="Registrar" CausesValidation=true CssClass="btn btn-primary"/>    
@@ -158,7 +158,7 @@
         }
         $(document).ready(function () {
             novaFrase();
-            $("#<%=rgCPF.ClientID%>").mask('000.000.000-00');
+            $("#<%=txtRgCPF.ClientID%>").mask('000.000.000-00');
             
         })
 

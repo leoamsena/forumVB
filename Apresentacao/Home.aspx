@@ -27,11 +27,11 @@
     <div class="row mt-3">
         <div class="col-sm-12"><h2>Enviar novo post</h2></div>
         <div class="col-sm-12">
-            <asp:TextBox ID="titulo" runat="server" CssClass="form-control" placeholder="Título"></asp:TextBox>
+            <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control" placeholder="Título"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Título é obrigatório!" ControlToValidate="titulo"></asp:RequiredFieldValidator>
         </div>
         <div class="col-sm-12">
-            <asp:TextBox ID="texto" runat="server" Rows="5" TextMode="MultiLine" placeholder="Texto" CssClass="form-control" CausesValidation="true"></asp:TextBox>
+            <asp:TextBox ID="txtText" runat="server" Rows="5" TextMode="MultiLine" placeholder="Texto" CssClass="form-control" CausesValidation="true"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Texto é obrigatório!" ControlToValidate="texto"></asp:RequiredFieldValidator>
         </div>
         

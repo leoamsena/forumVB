@@ -23,13 +23,13 @@ Partial Public Class Home
     Protected WithEvents Posts As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    '''Controle titulo.
+    '''Controle txtTitle.
     '''</summary>
     '''<remarks>
     '''Campo gerado automaticamente.
     '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
     '''</remarks>
-    Protected WithEvents titulo As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtTitle As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Controle RequiredFieldValidator2.
@@ -41,13 +41,13 @@ Partial Public Class Home
     Protected WithEvents RequiredFieldValidator2 As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
-    '''Controle texto.
+    '''Controle txtText.
     '''</summary>
     '''<remarks>
     '''Campo gerado automaticamente.
     '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
     '''</remarks>
-    Protected WithEvents texto As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtText As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Controle RequiredFieldValidator1.

@@ -21,7 +21,7 @@ Public Class FuncionarioController
 
     Public Function RegisterFuncionario(strFuncionarioName As String, strCpf As String, strEmail As String, strPassword As String) As Boolean
         strPassword = Database.GetHash(strPassword)
-        Dim objFuncionario As Funcionario = New Funcionario(strCpf, strFuncionarioName, strEmail, strPassword)
+        Dim objFuncionario As mdlFuncionario = New mdlFuncionario(strCpf, strFuncionarioName, strEmail, strPassword)
         Dim blnSuccess = FFuncionarioDatabase.registerFunc(objFuncionario)
         If (blnSuccess) Then
             onNewUserRegistered()

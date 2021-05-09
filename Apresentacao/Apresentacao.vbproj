@@ -227,9 +227,9 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Models\Exceptions\InvalidCPF.vb" />
-    <Compile Include="Models\Funcionario.vb" />
+    <Compile Include="Models\mdlFuncionario.vb" />
     <Compile Include="Models\HasIdInterface.vb" />
-    <Compile Include="Models\Pessoa.vb" />
+    <Compile Include="Models\mdlPessoa.vb" />
     <Compile Include="Models\Post.Metodos.vb" />
     <Compile Include="Models\Post.Propriedades.vb" />
     <Compile Include="Models\Post.Campos.vb" />
