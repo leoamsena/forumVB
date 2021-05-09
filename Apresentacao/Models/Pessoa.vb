@@ -1,34 +1,34 @@
 ﻿Public MustInherit Class Pessoa
-    Private FCPF As String
-    Private FNome As String
+    Private FCpf As String
+    Private FName As String
 
-    Public MustOverride ReadOnly Property id
+    Public MustOverride ReadOnly Property Id
 
 
 
-    Public ReadOnly Property CPF
+    Public ReadOnly Property Cpf
         Get
-            Return FCPF
+            Return FCpf
         End Get
     End Property
-    Public ReadOnly Property nome
+    Public ReadOnly Property Name
         Get
-            Return FNome
+            Return FName
         End Get
     End Property
     Public Sub New(CPF As String, Nome As String)
-        If CheckCPF(CPF) = True Then
-            FCPF = CPF
+        If CheckCpf(CPF) = True Then
+            FCpf = CPF
         Else
             Throw New InvalidCPF()
         End If
 
-        FNome = Nome
+        FName = Nome
     End Sub
     Public Sub New(Nome As String)
-        FNome = Nome
+        FName = Nome
     End Sub
-    Private Function CheckCPF(CPF As String) As Boolean
+    Private Function CheckCpf(CPF As String) As Boolean
 
         Dim varPessoa As Pessoa
         varPessoa = New Funcionario(1)

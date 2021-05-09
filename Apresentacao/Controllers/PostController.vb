@@ -1,22 +1,22 @@
 ﻿Public Class PostController
-    Private db As PostDB
-    Friend WithEvents MySender As FuncionarioController
+    Private FPostDatabase As PostDB
+    Friend WithEvents FMySender As FuncionarioController
 
 
     Public Sub New()
-        db = New PostDB()
+        FPostDatabase = New PostDB()
     End Sub
 
-    Public Sub onNewUserRegistered(Source As Object, args As EventArgs) Handles MySender.newUserRegistered
+    Public Sub onNewUserRegistered(Source As Object, args As EventArgs) Handles FMySender.newUserRegistered
         Debug.WriteLine("novo")
         Dim test As Integer = Nothing
-        db.insertPost(New Post("Novo usuário!", "Agora temos um novo usuário para contribuir conosco!", Date.Now(), New Funcionario(test)))
+        FPostDatabase.SavePost(New Post("Novo usuário!", "Agora temos um novo usuário para contribuir conosco!", Date.Now(), New Funcionario(test)))
     End Sub
-    Public Function allPosts() As Post()
-        Return db.searchPost()
+    Public Function GetAllPosts() As Post()
+        Return FPostDatabase.SearchPosts()
     End Function
-    Public Function insertPost(titulo As String, texto As String, funcionario As Integer)
-        Return db.insertPost(New Post(titulo, texto, Date.Now(), New Funcionario(funcionario)))
+    Public Function SavePost(titulo As String, texto As String, funcionario As Integer)
+        Return FPostDatabase.SavePost(New Post(titulo, texto, Date.Now(), New Funcionario(funcionario)))
     End Function
 
 End Class

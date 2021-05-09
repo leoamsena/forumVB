@@ -1,17 +1,17 @@
 ﻿Public Class Database
-    Private Const strConn As String = "Provider=SQLOLEDB;workstation 
+    Private Const STR_CONN As String = "Provider=SQLOLEDB;workstation 
         id=forumdb.mssql.somee.com;packet size=4096;user id=leoamsena_SQLLogin_1;
         pwd=oolz1e5slp;data source=forumdb.mssql.somee.com;
         persist security info=False;initial catalog=forumdb"
-    Protected Shared ReadOnly Property conn
+    Protected Shared ReadOnly Property Conn
         Get
-            Return New OleDb.OleDbConnection(strConn)
+            Return New OleDb.OleDbConnection(STR_CONN)
         End Get
     End Property
 
     Public Sub readWithDataSetExample()
         Dim strSql As String = "SELECT * FROM posts"
-        Dim da As New OleDb.OleDbDataAdapter(strSql, strConn)
+        Dim da As New OleDb.OleDbDataAdapter(strSql, STR_CONN)
         Dim dt As New DataTable("posts")
 
         da.Fill(dt)
@@ -24,13 +24,13 @@
     End Sub
     Public Sub readWithDataSetExample2()
         Dim strSql As String = "SELECT * FROM posts"
-        Dim da As New OleDb.OleDbDataAdapter(strSql, strConn)
+        Dim da As New OleDb.OleDbDataAdapter(strSql, STR_CONN)
         Dim ds As New DataSet()
 
         da.Fill(ds, "posts")
 
         strSql = "SELECT * FROM funcionarios"
-        da = New OleDb.OleDbDataAdapter(strSql, strConn)
+        da = New OleDb.OleDbDataAdapter(strSql, STR_CONN)
         For Each row As DataRow In ds.Tables("funcionarios").Rows
             Dim cpf As String = row.Field(Of String)("CPF")
             Dim nome As String = row.Field(Of String)("nome")
@@ -43,7 +43,7 @@
     ' coon
     ' email@email.com
     ' senha123
-    Public Function mountCmd(strSQL As String, connection As OleDb.OleDbConnection,
+    Public Function MountCmd(strSQL As String, connection As OleDb.OleDbConnection,
                              ParamArray params() As String) As OleDb.OleDbCommand
         Dim cmd As New OleDb.OleDbCommand(strSQL, connection)
         Dim count As Integer = 1
@@ -56,7 +56,7 @@
         Return cmd
     End Function
 
-    Public Function insertData(cmd As OleDb.OleDbCommand, connection As OleDb.OleDbConnection) As Boolean
+    Public Function SaveRecord(cmd As OleDb.OleDbCommand, connection As OleDb.OleDbConnection) As Boolean
         connection.Open()
         Dim icount As Integer
         icount = cmd.ExecuteNonQuery()
@@ -64,7 +64,7 @@
         Return icount >= 1
     End Function
 
-    Public Overridable Function readData(cmd As OleDb.OleDbCommand, conection As OleDb.OleDbConnection) As Queue
+    Public Overridable Function SearchRecords(cmd As OleDb.OleDbCommand, conection As OleDb.OleDbConnection) As Queue
         conection.Open()
         Dim sqlReader As OleDb.OleDbDataReader = cmd.ExecuteReader()
         Dim exists As Boolean = sqlReader.HasRows
@@ -86,7 +86,7 @@
         conection.Close()
         Return objReturn
     End Function
-    Public Shared Function hash(strToHash As String)
+    Public Shared Function GetHash(strToHash As String)
         Dim md5Obj As New Security.Cryptography.MD5CryptoServiceProvider
         Dim bytesToHash() As Byte = System.Text.Encoding.ASCII.GetBytes(strToHash)
 

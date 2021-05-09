@@ -6,7 +6,7 @@
         FPostDate = PDate
         FTitle = Title
         FText = Text
-        FUsuario = Funcionario
+        FUser = Funcionario
         FId = Id
     End Sub
 End Class

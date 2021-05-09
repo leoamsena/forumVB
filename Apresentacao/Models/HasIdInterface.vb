@@ -1,4 +1,4 @@
 ﻿Public Interface HasIdInterface
-    ReadOnly Property id As Integer
+    ReadOnly Property Id As Integer
 End Interface
 

@@ -3,10 +3,10 @@
 
 
 
-    Public Function searchPost() As Post()
-        Dim connection = conn
-        Dim cmd As OleDb.OleDbCommand = mountCmd("Select p.*,f.nome FROM posts AS p INNER JOIN funcionarios AS F ON f.id = p.usuario ORDER BY data DESC", connection, Nothing)
-        Dim objDict As Queue = readData(cmd, connection)
+    Public Function SearchPosts() As Post()
+        Dim connection = Conn
+        Dim cmd As OleDb.OleDbCommand = MountCmd("Select p.*,f.nome FROM posts AS p INNER JOIN funcionarios AS F ON f.id = p.usuario ORDER BY data DESC", connection, Nothing)
+        Dim objDict As Queue = SearchRecords(cmd, connection)
         Dim arrPost As Post() = Nothing
         Dim tam As Integer = 0
         For Each row As Dictionary(Of String, String) In objDict
@@ -18,10 +18,10 @@
 
     End Function
 
-    Public Function insertPost(post As Post) As Boolean
-        Dim connection = conn
-        Dim cmd = mountCmd("INSERT INTO posts(titulo,texto,data,usuario) VALUES (?,?, ?,? )", connection, post.title, post.text, post.postDate, post.usuario.id)
-        Return insertData(cmd, connection)
+    Public Function SavePost(post As Post) As Boolean
+        Dim connection = Conn
+        Dim cmd = MountCmd("INSERT INTO posts(titulo,texto,data,usuario) VALUES (?,?, ?,? )", connection, post.Title, post.Text, post.PostDate, post.User.id)
+        Return SaveRecord(cmd, connection)
     End Function
 
 End Class

@@ -1,13 +1,13 @@
 ﻿Public Class InvalidCPF
     Inherits Exception
-    Private FOp As String
+    Private FAbout As String
     Public Sub New(Optional Op As String = "CPF inválido")
         MyBase.New(Op)
-        FOp = Op
+        FAbout = Op
     End Sub
-    Public ReadOnly Property getOp() As String
+    Public ReadOnly Property About As String
         Get
-            Return FOp
+            Return FAbout
         End Get
     End Property
 

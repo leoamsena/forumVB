@@ -3,18 +3,18 @@
     Private FEmail As String
     Private FPassword As String
     Private FId As Integer
-    Public Overrides ReadOnly Property id
+    Public Overrides ReadOnly Property Id
         Get
             Return FId
         End Get
     End Property
 
-    Public ReadOnly Property email
+    Public ReadOnly Property Email
         Get
             Return FEmail
         End Get
     End Property
-    Public ReadOnly Property password
+    Public ReadOnly Property Password
         Get
             Return FPassword
         End Get
