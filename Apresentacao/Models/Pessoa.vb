@@ -29,11 +29,6 @@
         FName = Nome
     End Sub
     Private Function CheckCpf(CPF As String) As Boolean
-
-        Dim varPessoa As Pessoa
-        varPessoa = New Funcionario(1)
-
-
         Try
             CPF = CPF.Replace(".", "")
             CPF = CPF.Replace("-", "")
@@ -43,24 +38,24 @@
                 Throw New InvalidCPF("Tamanho")
 
             End If
-            Dim arrCPF = CPF.ToCharArray()
+            Dim arrCpf = CPF.ToCharArray()
             Dim numFirst As Integer = 0
             Dim numSecond As Integer = 0
-            Dim bolIdentic As Boolean = True
-            Dim chrLast As Char = arrCPF(0)
+            Dim blnIdentic As Boolean = True
+            Dim chrLast As Char = arrCpf(0)
             For i As Integer = 0 To 8
-                numFirst += Val(arrCPF(i)) * (10 - i)
+                numFirst += Val(arrCpf(i)) * (10 - i)
 
-                numSecond += Val(arrCPF(i)) * (11 - i)
-                If chrLast <> arrCPF(i) Then
-                    bolIdentic = False
+                numSecond += Val(arrCpf(i)) * (11 - i)
+                If chrLast <> arrCpf(i) Then
+                    blnIdentic = False
                 End If
-                chrLast = arrCPF(i)
+                chrLast = arrCpf(i)
             Next
-            If bolIdentic Then
+            If blnIdentic Then
                 Throw New InvalidCPF()
             End If
-            numSecond += Val(arrCPF(9)) * 2
+            numSecond += Val(arrCpf(9)) * 2
 
             numFirst = 11 - (numFirst Mod 11)
             numFirst = If(numFirst >= 10, 0, numFirst)
@@ -69,10 +64,10 @@
             numSecond = If(numSecond >= 10, 0, numSecond)
 
 
-            If numFirst <> Val(arrCPF(9)) Then
+            If numFirst <> Val(arrCpf(9)) Then
                 Throw New InvalidCPF("Primeiro")
             End If
-            If numSecond <> Val(arrCPF(10)) Then
+            If numSecond <> Val(arrCpf(10)) Then
                 Throw New InvalidCPF("Segundo")
             End If
             Return True

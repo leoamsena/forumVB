@@ -11,29 +11,29 @@
 
     Public Sub readWithDataSetExample()
         Dim strSql As String = "SELECT * FROM posts"
-        Dim da As New OleDb.OleDbDataAdapter(strSql, STR_CONN)
-        Dim dt As New DataTable("posts")
+        Dim dataAdapter As New OleDb.OleDbDataAdapter(strSql, STR_CONN)
+        Dim dataTable As New DataTable("posts")
 
-        da.Fill(dt)
-        da.FillSchema(dt, SchemaType.Source)
+        dataAdapter.Fill(dataTable)
+        dataAdapter.FillSchema(dataTable, SchemaType.Source)
 
-        For Each row As DataRow In dt.Rows
-            Dim titulo As String = row.Field(Of String)("titulo")
-            Dim texto As String = row.Field(Of String)("texto")
+        For Each row As DataRow In dataTable.Rows
+            Dim varTitulo As String = row.Field(Of String)("titulo")
+            Dim varTexto As String = row.Field(Of String)("texto")
         Next
     End Sub
     Public Sub readWithDataSetExample2()
         Dim strSql As String = "SELECT * FROM posts"
-        Dim da As New OleDb.OleDbDataAdapter(strSql, STR_CONN)
-        Dim ds As New DataSet()
+        Dim dataAdapter As New OleDb.OleDbDataAdapter(strSql, STR_CONN)
+        Dim dataSet As New DataSet()
 
-        da.Fill(ds, "posts")
+        dataAdapter.Fill(dataSet, "posts")
 
         strSql = "SELECT * FROM funcionarios"
-        da = New OleDb.OleDbDataAdapter(strSql, STR_CONN)
-        For Each row As DataRow In ds.Tables("funcionarios").Rows
-            Dim cpf As String = row.Field(Of String)("CPF")
-            Dim nome As String = row.Field(Of String)("nome")
+        dataAdapter = New OleDb.OleDbDataAdapter(strSql, STR_CONN)
+        For Each row As DataRow In dataSet.Tables("funcionarios").Rows
+            Dim varCpf As String = row.Field(Of String)("CPF")
+            Dim varName As String = row.Field(Of String)("nome")
         Next
     End Sub
 
@@ -45,52 +45,52 @@
     ' senha123
     Public Function MountCmd(strSQL As String, connection As OleDb.OleDbConnection,
                              ParamArray params() As String) As OleDb.OleDbCommand
-        Dim cmd As New OleDb.OleDbCommand(strSQL, connection)
-        Dim count As Integer = 1
+        Dim objCommand As New OleDb.OleDbCommand(strSQL, connection)
+        Dim numAux As Integer = 1
         If params IsNot Nothing Then
             For Each param As String In params
-                cmd.Parameters.AddWithValue("@p" & count, param)
-                count += 1
+                objCommand.Parameters.AddWithValue("@p" & numAux, param)
+                numAux += 1
             Next
         End If
-        Return cmd
+        Return objCommand
     End Function
 
     Public Function SaveRecord(cmd As OleDb.OleDbCommand, connection As OleDb.OleDbConnection) As Boolean
         connection.Open()
-        Dim icount As Integer
-        icount = cmd.ExecuteNonQuery()
+        Dim numTablesAffected As Integer
+        numTablesAffected = cmd.ExecuteNonQuery()
         connection.Close()
-        Return icount >= 1
+        Return numTablesAffected >= 1
     End Function
 
     Public Overridable Function SearchRecords(cmd As OleDb.OleDbCommand, conection As OleDb.OleDbConnection) As Queue
         conection.Open()
-        Dim sqlReader As OleDb.OleDbDataReader = cmd.ExecuteReader()
-        Dim exists As Boolean = sqlReader.HasRows
-        Dim objReturn As New Queue()
-        If exists Then
-            While sqlReader.Read()
-                Dim objDic As New Dictionary(Of String, String)
-                Dim values(sqlReader.FieldCount) As Object
-                sqlReader.GetValues(values)
-                For i As Integer = 0 To (sqlReader.FieldCount - 1)
-                    objDic.Add(sqlReader.GetName(i), values(i).ToString)
+        Dim objDataReader As OleDb.OleDbDataReader = cmd.ExecuteReader()
+        Dim blnDataExists As Boolean = objDataReader.HasRows
+        Dim queue As New Queue()
+        If blnDataExists Then
+            While objDataReader.Read()
+                Dim dictionary As New Dictionary(Of String, String)
+                Dim varValues(objDataReader.FieldCount) As Object
+                objDataReader.GetValues(varValues)
+                For i As Integer = 0 To (objDataReader.FieldCount - 1)
+                    dictionary.Add(objDataReader.GetName(i), varValues(i).ToString)
                 Next
-                objReturn.Enqueue(objDic)
+                queue.Enqueue(dictionary)
             End While
         Else
             conection.Close()
             Return Nothing
         End If
         conection.Close()
-        Return objReturn
+        Return queue
     End Function
     Public Shared Function GetHash(strToHash As String)
-        Dim md5Obj As New Security.Cryptography.MD5CryptoServiceProvider
+        Dim objMd5 As New Security.Cryptography.MD5CryptoServiceProvider
         Dim bytesToHash() As Byte = System.Text.Encoding.ASCII.GetBytes(strToHash)
 
-        bytesToHash = md5Obj.ComputeHash(bytesToHash)
+        bytesToHash = objMd5.ComputeHash(bytesToHash)
 
         Dim strResult As String = ""
 

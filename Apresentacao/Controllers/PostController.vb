@@ -9,8 +9,8 @@
 
     Public Sub onNewUserRegistered(Source As Object, args As EventArgs) Handles FMySender.newUserRegistered
         Debug.WriteLine("novo")
-        Dim test As Integer = Nothing
-        FPostDatabase.SavePost(New Post("Novo usuário!", "Agora temos um novo usuário para contribuir conosco!", Date.Now(), New Funcionario(test)))
+        'Dim test As Integer = Nothing
+        'FPostDatabase.SavePost(New Post("Novo usuário!", "Agora temos um novo usuário para contribuir conosco!", Date.Now(), New Funcionario(test)))
     End Sub
     Public Function GetAllPosts() As Post()
         Return FPostDatabase.SearchPosts()

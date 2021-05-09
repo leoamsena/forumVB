@@ -19,14 +19,14 @@ Public Class FuncionarioController
         Return FFuncionarioDatabase.makeAuth(login, Database.GetHash(password))
     End Function
 
-    Public Function RegisterFuncionario(nome As String, CPF As String, email As String, password As String) As Boolean
-        password = Database.GetHash(password)
-        Dim func As Funcionario = New Funcionario(CPF, nome, email, password)
-        Dim success = FFuncionarioDatabase.registerFunc(func)
-        If (success) Then
+    Public Function RegisterFuncionario(strFuncionarioName As String, strCpf As String, strEmail As String, strPassword As String) As Boolean
+        strPassword = Database.GetHash(strPassword)
+        Dim objFuncionario As Funcionario = New Funcionario(strCpf, strFuncionarioName, strEmail, strPassword)
+        Dim blnSuccess = FFuncionarioDatabase.registerFunc(objFuncionario)
+        If (blnSuccess) Then
             onNewUserRegistered()
         End If
-        Return success
+        Return blnSuccess
     End Function
 
 End Class
