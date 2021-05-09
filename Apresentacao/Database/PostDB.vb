@@ -5,22 +5,24 @@
 
     Public Function SearchPosts() As mdlPost()
         Dim objConnection = Conn
-        Dim objCommand As OleDb.OleDbCommand = MountCmd("Select p.*,f.nome FROM posts AS p INNER JOIN funcionarios AS F ON f.id = p.usuario ORDER BY data DESC", objConnection, Nothing)
+        Dim objCommand As OleDb.OleDbCommand = MountCmd("Select p.*,f.Name FROM TB_POST AS p INNER JOIN TB_FUNCIONARIO AS F ON f.id = p.Funcionario_Id ORDER BY Date DESC", objConnection, Nothing)
         Dim objDict As Queue = SearchRecords(objCommand, objConnection)
         Dim arrPost As mdlPost() = Nothing
         Dim numLength As Integer = 0
-        For Each row As Dictionary(Of String, String) In objDict
-            numLength += 1
-            ReDim Preserve arrPost(numLength - 1)
-            arrPost(numLength - 1) = New mdlPost(row.Item("titulo"), row.Item("texto"), row.Item("data"), New mdlFuncionario(row.Item("usuario")), row.Item("id"))
-        Next
+        If objDict IsNot Nothing Then
+            For Each row As Dictionary(Of String, String) In objDict
+                numLength += 1
+                ReDim Preserve arrPost(numLength - 1)
+                arrPost(numLength - 1) = New mdlPost(row.Item("Title"), row.Item("Text"), row.Item("Date"), New mdlFuncionario(row.Item("Funcionario_Id")), row.Item("Id"))
+            Next
+        End If
         Return arrPost
 
     End Function
 
     Public Function SavePost(post As mdlPost) As Boolean
         Dim objConnection = Conn
-        Dim objCommand = MountCmd("INSERT INTO posts(titulo,texto,data,usuario) VALUES (?,?, ?,? )", objConnection, post.Title, post.Text, post.PostDate, post.User.id)
+        Dim objCommand = MountCmd("INSERT INTO TB_POST(Title,Text,Date,Funcionario_Id) VALUES (?,?, ?,? )", objConnection, post.Title, post.Text, post.PostDate, post.User.id)
         Return SaveRecord(objCommand, objConnection)
     End Function
 

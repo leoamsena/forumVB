@@ -3,12 +3,12 @@
 
     Public Function MakeAuthentication(login As String, password As String) As mdlFuncionario
         Dim objConnection As OleDb.OleDbConnection = Conn
-        Dim objCommand = MountCmd("Select TOP 1 * FROM Funcionarios WHERE email = ? AND password = ? ", objConnection, login, password)
+        Dim objCommand = MountCmd("Select TOP 1 * FROM TB_FUNCIONARIO WHERE Email = ? AND Password = ? ", objConnection, login, password)
         Dim queue = SearchRecords(objCommand, objConnection)
         Dim objFunc As mdlFuncionario = Nothing
         If queue IsNot Nothing Then
             Dim result As Dictionary(Of String, String) = queue.Dequeue()
-            objFunc = New mdlFuncionario(result.Item("CPF"), result.Item("nome"), result.Item("email"), result.Item("password"), result.Item("id"))
+            objFunc = New mdlFuncionario(result.Item("CPF"), result.Item("Name"), result.Item("Email"), result.Item("Password"), result.Item("Id"))
         End If
         objConnection.Close()
         Return objFunc
@@ -17,7 +17,7 @@
 
     Public Function RegisterFuncionario(func As mdlFuncionario) As Boolean
         Dim objConnection = Conn
-        Dim objCommand = MountCmd("INSERT INTO Funcionarios(nome,cpf,email,password) VALUES (?,?, ?,? )", objConnection, func.Name, func.Cpf, func.Email, func.Password)
+        Dim objCommand = MountCmd("INSERT INTO TB_FUNCIONARIO(Name,Cpf,Email,Password) VALUES (?,?, ?,? )", objConnection, func.Name, func.Cpf, func.Email, func.Password)
         Return SaveRecord(objCommand, objConnection)
     End Function
 End Class
