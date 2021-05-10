@@ -1,4 +1,4 @@
-﻿Public NotInheritable Class mdlFuncionario
+﻿Public NotInheritable Class Funcionario
     Inherits mdlPessoa
     Private FEmail As String
     Private FPassword As String

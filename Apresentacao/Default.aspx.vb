@@ -28,7 +28,7 @@
 
 
     Protected Sub Login1_Authenticate(sender As Object, e As AuthenticateEventArgs) Handles Login1.Authenticate
-        Dim objFunc As mdlFuncionario = FFuncionarioController.MakeLogin(Login1.UserName, Login1.Password)
+        Dim objFunc As Funcionario = FFuncionarioController.MakeLogin(Login1.UserName, Login1.Password)
         If Not IsNothing(objFunc) Then
             Session("autenticado") = "OK"
             Session("funcionario") = objFunc

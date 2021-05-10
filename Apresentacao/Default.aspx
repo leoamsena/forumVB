@@ -44,9 +44,14 @@
                                 </asp:RegularExpressionValidator>
                             </div>
                             <div class="mb-3">
-                                <asp:Label ID="lblPasswordLabel" runat="server" AssociatedControlID="Password" CssClass="form-label">Senha:</asp:Label>
+                                <asp:Label ID="lblPasswordLabel" runat="server"
+                                    AssociatedControlID="Password" CssClass="form-label">
+                                    Senha:
+                                </asp:Label>
                                 <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="A senha é obrigatória." ToolTip="A senha é obrigatória." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
-                                <asp:TextBox ID="Password" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="Password" runat="server" TextMode="Password"
+                                    CssClass="form-control">
+                                </asp:TextBox>
                                 
                             </div>
                             <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
@@ -64,7 +69,8 @@
         <p class="lead">Para ver as publicações e publicar seus próprios posts faça login.<asp:Label ID="Label1" runat="server" Text=""></asp:Label>
         </p>
         <p>Frase aleatória do dia: 
-            <asp:Label ID="lblFrase" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="lblFrase" runat="server" Text="Label"></asp:Label><br />
+            <asp:Button ID="btnNovaFrase" runat="server" CssClass="btn btn-success" Text="Nova frase" />
         </p>
         
             <div class="row">
@@ -148,16 +154,20 @@
     </div>
     <script type="text/javascript">
         function novaFrase() {
+            $("#<%=lblFrase.ClientID %>").text("...");
             $.ajax({
                 url: "https://allugofrases.herokuapp.com/frases/random",
                 success: function (data) {
-                    $("#<%=lblFrase.ClientID %>").text(data.frase + " - " + data.livro)
-                    $("#<%=lblFrase.ClientID%>").effect("fade")
+                    $("#<%=lblFrase.ClientID %>").text(data.frase + " - " + data.livro);
+                    $("#<%=lblFrase.ClientID%>").effect("fade");
                 }
             })
         }
         $(document).ready(function () {
             novaFrase();
+            $("#<%=btnNovaFrase.ClientID%>").click(function (event) {
+                novaFrase();
+            })
             $("#<%=txtRgCPF.ClientID%>").mask('000.000.000-00');
             
         })

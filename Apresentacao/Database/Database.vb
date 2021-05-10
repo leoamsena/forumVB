@@ -10,30 +10,30 @@
     End Property
 
     Public Sub readWithDataSetExample()
-        Dim strSql As String = "SELECT * FROM posts"
+        Dim strSql As String = "SELECT * FROM TB_POST"
         Dim dataAdapter As New OleDb.OleDbDataAdapter(strSql, STR_CONN)
-        Dim dataTable As New DataTable("posts")
+        Dim dataTable As New DataTable("TB_POST")
 
         dataAdapter.Fill(dataTable)
         dataAdapter.FillSchema(dataTable, SchemaType.Source)
 
         For Each row As DataRow In dataTable.Rows
-            Dim varTitulo As String = row.Field(Of String)("titulo")
-            Dim varTexto As String = row.Field(Of String)("texto")
+            Dim varTitulo As String = row.Field(Of String)("Title")
+            Dim varTexto As String = row.Field(Of String)("Text")
         Next
     End Sub
     Public Sub readWithDataSetExample2()
-        Dim strSql As String = "SELECT * FROM posts"
+        Dim strSql As String = "SELECT * FROM TB_POST"
         Dim dataAdapter As New OleDb.OleDbDataAdapter(strSql, STR_CONN)
         Dim dataSet As New DataSet()
 
-        dataAdapter.Fill(dataSet, "posts")
+        dataAdapter.Fill(dataSet, "TB_POST")
 
-        strSql = "SELECT * FROM funcionarios"
+        strSql = "SELECT * FROM TB_FUNCIONARIO"
         dataAdapter = New OleDb.OleDbDataAdapter(strSql, STR_CONN)
-        For Each row As DataRow In dataSet.Tables("funcionarios").Rows
+        For Each row As DataRow In dataSet.Tables("TB_FUNCIONARIO").Rows
             Dim varCpf As String = row.Field(Of String)("CPF")
-            Dim varName As String = row.Field(Of String)("nome")
+            Dim varName As String = row.Field(Of String)("Name")
         Next
     End Sub
 

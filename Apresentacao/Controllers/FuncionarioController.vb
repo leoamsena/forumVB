@@ -4,6 +4,7 @@
 Public Class FuncionarioController
     Private FFuncionarioDatabase = New FuncionarioDB()
     Private FPostController = New PostController()
+
     Public Delegate Sub newUserEventHandler(source As Object, args As EventArgs)
     Public Event newUserRegistered As newUserEventHandler
 
@@ -12,7 +13,6 @@ Public Class FuncionarioController
     End Sub
 
     Protected Overridable Sub onNewUserRegistered()
-
         RaiseEvent newUserRegistered(Me, EventArgs.Empty)
     End Sub
     Public Function MakeLogin(login As String, password As String)
@@ -21,7 +21,7 @@ Public Class FuncionarioController
 
     Public Function RegisterFuncionario(strFuncionarioName As String, strCpf As String, strEmail As String, strPassword As String) As Boolean
         strPassword = Database.GetHash(strPassword)
-        Dim objFuncionario As mdlFuncionario = New mdlFuncionario(strCpf, strFuncionarioName, strEmail, strPassword)
+        Dim objFuncionario As Funcionario = New Funcionario(strCpf, strFuncionarioName, strEmail, strPassword)
         Dim blnSuccess = FFuncionarioDatabase.RegisterFuncionario(objFuncionario)
         If (blnSuccess) Then
             onNewUserRegistered()
