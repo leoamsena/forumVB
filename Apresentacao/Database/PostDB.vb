@@ -5,7 +5,7 @@
 
     Public Function SearchPosts() As Post()
         Dim objConnection = Conn
-        Dim objCommand As OleDb.OleDbCommand = MountCmd("Select p.*,f.Name FROM TB_POST AS p INNER JOIN TB_FUNCIONARIO AS F ON f.id = p.Funcionario_Id ORDER BY Date DESC", objConnection, Nothing)
+        Dim objCommand = MountCmd("Select p.*,f.Name FROM TB_POST AS p INNER JOIN TB_FUNCIONARIO AS F ON f.id = p.Funcionario_Id ORDER BY Date DESC", objConnection, Nothing)
         Dim objDict As Queue = SearchRecords(objCommand, objConnection)
         Dim arrPost As Post() = Nothing
         Dim numLength As Integer = 0
@@ -22,7 +22,7 @@
 
     Public Function SavePost(post As Post) As Boolean
         Dim objConnection = Conn
-        Dim objCommand = MountCmd("INSERT INTO TB_POST(Title,Text,Date,Funcionario_Id) VALUES (?,?, ?,? )", objConnection, post.Title, post.Text, post.PostDate, post.User.id)
+        Dim objCommand = MountCmd("INSERT INTO TB_POST(Title,Text,Date,Funcionario_Id) VALUES (@Title,@Text, @Date,@Funcionario_Id )", objConnection, post.Title, post.Text, post.PostDate, post.User.id)
         Return SaveRecord(objCommand, objConnection)
     End Function
 

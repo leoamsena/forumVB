@@ -1,17 +1,14 @@
 ﻿Public Class Database
-    Private Const STR_CONN As String = "Provider=SQLOLEDB;workstation 
-        id=forumdb.mssql.somee.com;packet size=4096;user id=leoamsena_SQLLogin_1;
-        pwd=oolz1e5slp;data source=forumdb.mssql.somee.com;
-        persist security info=False;initial catalog=forumdb"
+    Private Const STR_CONN As String = "workstation id=forumdb.mssql.somee.com;packet size=4096;user id=leoamsena_SQLLogin_1;pwd=oolz1e5slp;data source=forumdb.mssql.somee.com;persist security info=False;initial catalog=forumdb"
     Protected Shared ReadOnly Property Conn
         Get
-            Return New OleDb.OleDbConnection(STR_CONN)
+            Return New SqlClient.SqlConnection(STR_CONN)
         End Get
     End Property
 
     Public Sub readWithDataSetExample()
         Dim strSql As String = "SELECT * FROM TB_POST"
-        Dim dataAdapter As New OleDb.OleDbDataAdapter(strSql, STR_CONN)
+        Dim dataAdapter As New SqlClient.SqlDataAdapter(strSql, STR_CONN)
         Dim dataTable As New DataTable("TB_POST")
 
         dataAdapter.Fill(dataTable)
@@ -24,13 +21,13 @@
     End Sub
     Public Sub readWithDataSetExample2()
         Dim strSql As String = "SELECT * FROM TB_POST"
-        Dim dataAdapter As New OleDb.OleDbDataAdapter(strSql, STR_CONN)
+        Dim dataAdapter As New SqlClient.SqlDataAdapter(strSql, STR_CONN)
         Dim dataSet As New DataSet()
 
         dataAdapter.Fill(dataSet, "TB_POST")
 
         strSql = "SELECT * FROM TB_FUNCIONARIO"
-        dataAdapter = New OleDb.OleDbDataAdapter(strSql, STR_CONN)
+        dataAdapter = New SqlClient.SqlDataAdapter(strSql, STR_CONN)
         For Each row As DataRow In dataSet.Tables("TB_FUNCIONARIO").Rows
             Dim varCpf As String = row.Field(Of String)("CPF")
             Dim varName As String = row.Field(Of String)("Name")
@@ -43,20 +40,23 @@
     ' coon
     ' email@email.com
     ' senha123
-    Public Function MountCmd(strSQL As String, connection As OleDb.OleDbConnection,
-                             ParamArray params() As String) As OleDb.OleDbCommand
-        Dim objCommand As New OleDb.OleDbCommand(strSQL, connection)
-        Dim numAux As Integer = 1
+    Public Function MountCmd(strSQL As String, connection As SqlClient.SqlConnection,
+                             ParamArray params() As String) As SqlClient.SqlCommand
+        Dim objCommand As New SqlClient.SqlCommand(strSQL, connection)
+        Dim numAux As Integer = 0
+        Dim rgx As New Regex("@[a-zA-Z0-9_-]+")
+        Dim matches = rgx.Matches(strSQL)
+
         If params IsNot Nothing Then
             For Each param As String In params
-                objCommand.Parameters.AddWithValue("@p" & numAux, param)
+                objCommand.Parameters.AddWithValue(matches.Item(numAux).Value, param)
                 numAux += 1
             Next
         End If
         Return objCommand
     End Function
 
-    Public Function SaveRecord(cmd As OleDb.OleDbCommand, connection As OleDb.OleDbConnection) As Boolean
+    Public Function SaveRecord(cmd As SqlClient.SqlCommand, connection As SqlClient.SqlConnection) As Boolean
         connection.Open()
         Dim numTablesAffected As Integer
         numTablesAffected = cmd.ExecuteNonQuery()
@@ -64,9 +64,9 @@
         Return numTablesAffected >= 1
     End Function
 
-    Public Overridable Function SearchRecords(cmd As OleDb.OleDbCommand, conection As OleDb.OleDbConnection) As Queue
+    Public Overridable Function SearchRecords(cmd As SqlClient.SqlCommand, conection As SqlClient.SqlConnection) As Queue
         conection.Open()
-        Dim objDataReader As OleDb.OleDbDataReader = cmd.ExecuteReader()
+        Dim objDataReader As SqlClient.SqlDataReader = cmd.ExecuteReader()
         Dim blnDataExists As Boolean = objDataReader.HasRows
         Dim queue As New Queue()
         If blnDataExists Then
